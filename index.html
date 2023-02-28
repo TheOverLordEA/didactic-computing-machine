@@ -110,7 +110,7 @@
 
       let count = 0;
       for (const item of popClass) {
-        item.classList.add(`restraunt${(count += 1)}`);
+        item.classList.add(`restaurant${(count += 1)}`);
       }
 
       //   window.addEventListener("load", () => {
@@ -127,9 +127,12 @@
         const filterInput = inputElement.value.toLowerCase();
         const ulElement = document.querySelector(".list-item");
         const liElement = document.getElementsByTagName("li");
+
         let a = null;
         let value = "";
-        console.log(liElement);
+        // console.log(liElement);
+
+        console.log(document.getElementsByTagName("div").className);
 
         for (let i = 0; liElement.length; i++) {
           a = liElement[i].getElementsByTagName("a")[0];
@@ -138,8 +141,24 @@
 
           if (value.toLowerCase().indexOf(filterInput) > -1) {
             liElement[i].style.display = "";
+            const classNames = document.getElementsByClassName(
+              liElement[i].className
+            );
+
+            for (let i = 0; i < classNames.length; i++) {
+              classNames[i].style.display = "";
+            }
           } else {
             liElement[i].style.display = "none";
+            console.log(liElement[i].className);
+            const classNames = document.getElementsByClassName(
+              liElement[i].className
+            );
+
+            for (let i = 0; i < classNames.length; i++) {
+              classNames[i].style.display = "none";
+              console.log(classNames[i]);
+            }
           }
         }
       }

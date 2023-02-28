@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/normalize.css" />
+    <link
+      rel="shortcut icon"
+      href="favicon.ico"
+      alt="Marker"
+      type="image/x-icon"
+    />
     <!-- Link to Pico.css -->
     <link
       rel="stylesheet"
@@ -20,7 +26,7 @@
 
     <script src="js/main.js" defer></script>
 
-    <title>Document</title>
+    <title>Marker MapBox</title>
   </head>
   <body>
     <div class="container">
@@ -37,7 +43,7 @@
           </div>
           <div class="nav-items-container">
             <div class="items">
-              <h1>My Neighborhood</h1>
+              <h1>My neighbourhood</h1>
               <input
                 type="text"
                 placeholder="Filter locations"
@@ -67,7 +73,6 @@
         zoom: 13,
       });
 
-      // Create popup
       const popupBerkeley = [
         {
           name: "BollyWood Indian TakeOut",
@@ -113,15 +118,6 @@
         item.classList.add(`restaurant${(count += 1)}`);
       }
 
-      //   window.addEventListener("load", () => {
-      //     popupBerkeley.forEach((el) => {
-      //       let li = document.createElement("li");
-      //       li.className = "li-item";
-      //       li.innerText = el.name;
-      //       ulElement.appendChild(li);
-      //     });
-      //   });
-
       function filterFunction() {
         const inputElement = document.querySelector(".input-element");
         const filterInput = inputElement.value.toLowerCase();
@@ -130,7 +126,6 @@
 
         let a = null;
         let value = "";
-        // console.log(liElement);
 
         console.log(document.getElementsByTagName("div").className);
 
@@ -150,14 +145,12 @@
             }
           } else {
             liElement[i].style.display = "none";
-            console.log(liElement[i].className);
             const classNames = document.getElementsByClassName(
               liElement[i].className
             );
 
             for (let i = 0; i < classNames.length; i++) {
               classNames[i].style.display = "none";
-              console.log(classNames[i]);
             }
           }
         }

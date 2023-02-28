@@ -11,6 +11,7 @@
       href="favicon.ico"
       alt="Marker"
       type="image/x-icon"
+      value=""
     />
     <!-- Link to Pico.css -->
     <link
@@ -155,6 +156,10 @@
           }
         }
       }
+
+      window.addEventListener("load", () => {
+        document.querySelector(".input-element").value = "";
+      });
     </script>
   </body>
 </html>

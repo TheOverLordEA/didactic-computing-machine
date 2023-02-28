@@ -17,7 +17,7 @@
       href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css"
       rel="stylesheet"
     />
-    <!-- JS script -->
+
     <script src="js/main.js" defer></script>
 
     <title>Document</title>
@@ -38,7 +38,7 @@
           <li class="nav-items-container">
             <div class="items">
               <h1>My Neighborhood</h1>
-              <input type="text" />
+              <input type="text" placeholder="Filter locations" />
               <ul class="list-item"></ul>
             </div>
           </li>
@@ -52,6 +52,52 @@
       var map = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/theoverlordea/clensrfsf000d01o8dse06o1b",
+        center: [-122.267055, 37.870047],
+        zoom: 13,
+      });
+
+      // Create popup
+      const popupBerkeley = [
+        {
+          name: "BollyWood Indian TakeOut",
+          lngLat: [-122.259813, 37.8757],
+        },
+        {
+          name: "La Italy",
+          lngLat: [-122.261449, 37.875569],
+        },
+        {
+          name: "Pat Brown Grille",
+          lngLat: [-122.26485, 37.873515],
+        },
+        {
+          name: "Free House",
+          lngLat: [-122.251841, 37.871017],
+        },
+        {
+          name: "Yali Cafe",
+          lngLat: [-122.256476, 37.873981],
+        },
+      ];
+
+      const ulElement = document.querySelector(".list-item");
+
+      // DOM element for marker
+      const el = document.createElement("div");
+      el.id = "marker";
+
+      //Marker Berkeley Restraunt
+      popupBerkeley.forEach(({ name, lngLat }) => {
+        const popup = new mapboxgl.Popup({ offSet: 25 }).setText(name);
+        new mapboxgl.Marker().setLngLat(lngLat).setPopup(popup).addTo(map);
+      });
+
+      window.addEventListener("load", () => {
+        popupBerkeley.forEach((el) => {
+          let li = document.createElement("li");
+          li.innerText = el.name;
+          ulElement.appendChild(li);
+        });
       });
     </script>
   </body>

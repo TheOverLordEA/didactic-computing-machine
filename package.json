@@ -1,0 +1,19 @@
+{
+  "name": "didactic-computing-machine",
+  "version": "1.0.0",
+  "description": "MapBox API project that uses HTML, vanilla JS, and Pico.css framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheOverLordEA/didactic-computing-machine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheOverLordEA/didactic-computing-machine/issues"
+  },
+  "homepage": "https://github.com/TheOverLordEA/didactic-computing-machine#readme"
+}

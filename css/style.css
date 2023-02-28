@@ -10,6 +10,17 @@
 /******************************************
   /* LAYOUT
   /*******************************************/
+
+#map {
+  height: 100vh;
+  width: 100vw;
+}
+
+#map canvas {
+  width: 100%;
+  height: 100%;
+}
+
 img {
   display: block;
   margin: 0 auto;

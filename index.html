@@ -26,7 +26,7 @@
     <div class="container">
       <nav>
         <ul>
-          <li class="burger-menu">
+          <div class="burger-menu">
             <button>
               <svg viewBox="0 0 100 80" width="40" height="40">
                 <rect width="100" height="20"></rect>
@@ -34,14 +34,25 @@
                 <rect y="60" width="100" height="20"></rect>
               </svg>
             </button>
-          </li>
-          <li class="nav-items-container">
+          </div>
+          <div class="nav-items-container">
             <div class="items">
               <h1>My Neighborhood</h1>
-              <input type="text" placeholder="Filter locations" />
-              <ul class="list-item"></ul>
+              <input
+                type="text"
+                placeholder="Filter locations"
+                class="input-element"
+                onkeyup="filterFunction()"
+              />
+              <ul class="list-item">
+                <li><a> BollyWood Indian TakeOut </a></li>
+                <li><a> La Italy </a></li>
+                <li><a> Pat Brown Grille </a></li>
+                <li><a> Free House </a></li>
+                <li><a> Yali Cafe </a></li>
+              </ul>
             </div>
-          </li>
+          </div>
         </ul>
       </nav>
     </div>
@@ -86,19 +97,52 @@
       const el = document.createElement("div");
       el.id = "marker";
 
-      //Marker Berkeley Restraunt
+      //Marker Berkeley Restaurant
       popupBerkeley.forEach(({ name, lngLat }) => {
-        const popup = new mapboxgl.Popup({ offSet: 25 }).setText(name);
+        const popup = new mapboxgl.Popup({
+          offSet: 25,
+        }).setText(name);
+
         new mapboxgl.Marker().setLngLat(lngLat).setPopup(popup).addTo(map);
       });
 
-      window.addEventListener("load", () => {
-        popupBerkeley.forEach((el) => {
-          let li = document.createElement("li");
-          li.innerText = el.name;
-          ulElement.appendChild(li);
-        });
-      });
+      const popClass = document.querySelectorAll(".mapboxgl-marker");
+
+      let count = 0;
+      for (const item of popClass) {
+        item.classList.add(`restraunt${(count += 1)}`);
+      }
+
+      //   window.addEventListener("load", () => {
+      //     popupBerkeley.forEach((el) => {
+      //       let li = document.createElement("li");
+      //       li.className = "li-item";
+      //       li.innerText = el.name;
+      //       ulElement.appendChild(li);
+      //     });
+      //   });
+
+      function filterFunction() {
+        const inputElement = document.querySelector(".input-element");
+        const filterInput = inputElement.value.toLowerCase();
+        const ulElement = document.querySelector(".list-item");
+        const liElement = document.getElementsByTagName("li");
+        let a = null;
+        let value = "";
+        console.log(liElement);
+
+        for (let i = 0; liElement.length; i++) {
+          a = liElement[i].getElementsByTagName("a")[0];
+
+          value = a.textContent || a.innerText;
+
+          if (value.toLowerCase().indexOf(filterInput) > -1) {
+            liElement[i].style.display = "";
+          } else {
+            liElement[i].style.display = "none";
+          }
+        }
+      }
     </script>
   </body>
 </html>

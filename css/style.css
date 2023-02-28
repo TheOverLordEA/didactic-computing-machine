@@ -31,13 +31,26 @@ body .container {
 
 .container .burger-menu {
   margin-top: 0;
-  margin-left: 0;
+  margin-left: 1rem;
   padding: 0;
 }
 
 .nav-items-container {
+  display: none;
+}
+
+.nav-item-on {
   display: flex;
   flex-direction: column;
+  margin-left: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.nav-items-on .items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #map {
